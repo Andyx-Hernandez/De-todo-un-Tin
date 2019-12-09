@@ -26,7 +26,7 @@
      const longitud = posicion.coords.longitude; // devuelve la longitud
      const exactitud = posicion.coords.accuracy; //exactitud del punto
 
-     mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`; // crea un link hacia openStreetMap
+     mapLink.href = `https://www.openstreetmap.org/#map=18/${latitud}/${longitud}`; // crea un link hacia openStreetMap
      mapLink.textContent = `Latitud: ${latitud} °, Longitud: ${longitud} °`;
 
     },()=>{
