@@ -1,0 +1,41 @@
+/*Ejemplo:
+	JLabel example = new JLabel("Me muevo");
+	example.addMouseMotionListener(moveAround);*/
+	//Este metodo se puede agregar al MouseMotionListener de cualquier objeto que implemente esta interfaz
+  
+	public MouseMotionListener moveAround(){
+
+		MouseMotionListener motion = new MouseMotionAdapter() { //Esta clase existe por conveniencia para crear oyentes(listener) a los objetos
+
+			public void mouseDragged(MouseEvent e) {
+				
+				int dragX = 0;
+				int dragY = 0;
+				
+				if(e.getButton() == MouseEvent.BUTTON1){ //Button1 devuelve un int si se ha lanzado el evento mouseCliked
+
+					dragX = e.getX();
+					dragY = e.getY();
+				}
+
+				/*Component es una clase abstracta
+				//Cualquier componente de swing Jlabel, JButton son subclases de Component
+				Tomar una referencia a un objeto y tratarla como una referencia a su clase base 
+				se denomina conversión hacia arriba*/
+				//El compilador de Java determina el tipo de objeto en tiempo de ejecucion
+				
+				Component source = (Component) e.getSource();
+				
+
+				if(source != null){
+
+					int x = e.getX();
+					int y = e.getY();
+					source.setLocation(source.getX() + (x-dragX), source.getY() + (y-dragY));	
+				}
+
+			}
+		};
+
+		return motion;
+	}
